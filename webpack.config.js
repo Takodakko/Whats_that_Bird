@@ -32,5 +32,9 @@ module.exports = {
         hot: true,
         publicPath: '/build/',
         port: 8080,
+        proxy: {
+            '/sightings': 'http://localhost:3000',
+            // '/': 'http://localhost:3000',
+        }
     },
 };
