@@ -15,6 +15,8 @@ app.get('/', (req, res) => {
 });
 app.get('/getBirds', apirouter)
 
+//app.delete('/deleteEntry', apirouter)
+
 
 
 // app.post('/sightings', formController.newSubmission, (req, res) => {

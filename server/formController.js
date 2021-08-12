@@ -25,7 +25,7 @@ const formController = {
                 //console.log(data, "data")
                 return res.locals.newBird = data;
             })
-            .then(() => next)
+            .then(() => next())
             .catch((err) => {
                 res.send("ERROR");
             })
@@ -43,7 +43,17 @@ const formController = {
             .catch((err) => {
                 res.send("ERROR");
             })
-    }
+    },
+    deleteEntry: (req, res, next) => {
+        console.log(req.params.id, "req.params.id")
+        const eyeDee = [req.params.id];
+        const formSubmit = 'DELETE FROM sightings WHERE _id = $1;';
+        db.query(formSubmit, eyeDee)
+        .then(() => next())
+        .catch((err) => {
+            res.send("ERROR");
+        })
+    },
 };
 
 module.exports = formController;

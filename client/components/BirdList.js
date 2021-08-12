@@ -16,17 +16,27 @@ class BirdList extends Component {
             // possibleIdent: " "
         }
         this.handleGet = this.handleGet.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
     
-    handleGet = function(g) {
-        //console.log(g, "get click")
-        fetch('/getBirds')
+    handleGet = function() {
+        fetch('/sightings/getBirds')
         .then((data) => data.json())
         .then((data) => this.setState({birdLists: data})) 
-//             const newList = data.map((el) => {
-// <BirdListing username={el.username} date={el.date} birdColor={el.birdcolor} location={el.location} otherdescription={el.otherDescription} possibleIdent={el.possibleident}/>
-// return newList
             }     
+    handleDelete = function(id) {
+        console.log(id, "id")
+        
+        fetch(`/sightings/deleteEntry/${id}`,{
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'Application/JSON'
+            },
+            // body: JSON.stringify(id)
+          })
+        .then((data) => data.json())
+        .then((data) => this.setState({birdLists: data}))
+    }
     
     
   render() {
@@ -38,10 +48,14 @@ class BirdList extends Component {
             {
                 this.state.birdLists.length &&
                 this.state.birdLists.map((bird) => {
+                    //console.log(bird.postdate, "bird.postdate")
+                    const reggie = /T.*/
+                    bird.postdate = bird.postdate.replace(reggie, "");
                   return (
                       <BirdListing 
                       key={bird._id}  
                       bird={bird}
+                      handleDelete={this.handleDelete}
                       />
                   )
                 })

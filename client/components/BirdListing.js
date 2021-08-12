@@ -2,11 +2,12 @@ import React from 'react';
 
 const BirdListing = (props) => {
     //const birdList = [];
-    console.log(props, "props")
-    const {username, postdate, birdcolor, location, otherdescription, possibleident} = props.bird;
+    const handleDelete = props.handleDelete;
+    console.log(props.bird, "props.bird")
+    const {_id, username, postdate, birdcolor, location, otherdescription, possibleident} = props.bird;
 
     return (
-        <div>Username: {username}<br></br> Postdate: {postdate}<br></br> Bird's color: {birdcolor}<br></br> Location: {location}<br></br> Other Description: {otherdescription}<br></br> Possible Identification: {possibleident}<br></br><br></br></div>
+        <div><strong>Username: </strong>{username}<br></br> <strong>Postdate: </strong>{postdate}<br></br> <strong>Bird's color: </strong>{birdcolor}<br></br> <strong>Location: </strong>{location}<br></br> <strong>Other Description: </strong>{otherdescription}<br></br> <strong>Possible Identification: </strong>{possibleident}<br></br><button onClick={() => handleDelete(_id)}>Delete Post</button><button>Add/Edit Possible Identification</button><br></br><br></br></div>
     )
 }
 

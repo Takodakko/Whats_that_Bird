@@ -14,4 +14,11 @@ router.get('/getBirds',
     formController.getBirds,
     (req, res) => res.status(200).json(res.locals.birdlist))
 
+router.delete('/deleteEntry/:id',
+    // () => console.log("Deleting"),
+    formController.deleteEntry,
+    formController.getBirds,
+    (req, res) => res.status(200).json(res.locals.birdlist)
+)
+
 module.exports = router;
