@@ -10,4 +10,8 @@ router.post('/',
     (req, res) => res.status(200).json(res.locals.newBird)
 )
 
+router.get('/getBirds',
+    formController.getBirds,
+    (req, res) => res.status(200).json(res.locals.birdlist))
+
 module.exports = router;

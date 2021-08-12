@@ -31,6 +31,18 @@ const formController = {
             })
         
       
+    },
+    getBirds: (req, res, next) => {
+        const formSubmit = 'SELECT * FROM sightings;';
+        db.query(formSubmit)
+            .then(data => {
+                //console.log(data.rows, "data.rows")
+                res.locals.birdlist = data.rows;
+            })
+            .then(() => next())
+            .catch((err) => {
+                res.send("ERROR");
+            })
     }
 };
 

@@ -13,7 +13,7 @@ app.use('/sightings', apirouter)
 app.get('/', (req, res) => {
     return res.status(200).sendFile(path.join(__dirname, './index.html'));
 });
-
+app.get('/getBirds', apirouter)
 
 
 

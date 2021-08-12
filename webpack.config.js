@@ -34,6 +34,7 @@ module.exports = {
         port: 8080,
         proxy: {
             '/sightings': 'http://localhost:3000',
+            '/getBirds': 'http://localhost:3000',
             // '/': 'http://localhost:3000',
         }
     },
