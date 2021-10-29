@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import Form from './Form';
-import Vue from 'vue';
 import BirdList from './BirdList';
 
-// Vue.createApp({
-//     data() {
-//         return {
-//             message: 'Hi'
-            
-//         }
-//     },
-// }).mount('#root');
+
 
 const date = new Date();
 const month = function(){
@@ -29,11 +21,7 @@ class App extends Component {
         this.handleChange = this.handleChange.bind(this);
         
     }
-    // componentDidMount() {
-    //     setState({ userName: " ", date: currdate, birdColor: " ", location: " ", otherDescription: " " });
-    // };
     
-    // componentDidUpdate(prevstate, currstate) {
         
         handleSubmit = function(e) {
             e.preventDefault();
@@ -44,7 +32,7 @@ class App extends Component {
                 location: this.state.location,
                 otherDescription: this.state.otherDescription
             }
-            //console.log(newPost, 'newPost')
+            
             fetch('/sightings', {
                 method: 'POST',
                 headers: {
@@ -53,7 +41,7 @@ class App extends Component {
                 body: JSON.stringify(newPost)
               })
             .then((data) => {
-                //console.log(data, "data")
+                
                 if (prevstate !== currstate) {
                     this.setState({userName: " ", date: currdate, birdColor: " ", location: " ", otherDescription: " "})
                 }
@@ -64,7 +52,7 @@ class App extends Component {
             
         
         handleChange = function(c) {
-            //console.log(c.target.id, "c.target.id")
+            
             this.setState({[c.target.id]: c.target.value})
         };
     // };
@@ -72,7 +60,7 @@ class App extends Component {
 
 
     render() {
-        //console.log(this.state, "this.state")
+        
         return ( 
           <div>
             <strong>What bird did you see?</strong>
